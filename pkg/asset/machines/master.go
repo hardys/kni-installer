@@ -37,6 +37,7 @@ import (
 	awsdefaults "github.com/openshift-metalkube/kni-installer/pkg/types/aws/defaults"
 	azuretypes "github.com/openshift-metalkube/kni-installer/pkg/types/azure"
 	azuredefaults "github.com/openshift-metalkube/kni-installer/pkg/types/azure/defaults"
+	baremetaltypes "github.com/openshift-metalkube/kni-installer/pkg/types/baremetal"
 	gcptypes "github.com/openshift-metalkube/kni-installer/pkg/types/gcp"
 	libvirttypes "github.com/openshift-metalkube/kni-installer/pkg/types/libvirt"
 	nonetypes "github.com/openshift-metalkube/kni-installer/pkg/types/none"
@@ -174,6 +175,9 @@ func (m *Master) Generate(dependencies asset.Parents) error {
 			return errors.Wrap(err, "failed to create master machine objects")
 		}
 		azure.ConfigMasters(machines, clusterID.InfraID)
+	case baremetaltypes.Name:
+		// FIXME: baremetal
+		return nil
 	case nonetypes.Name, vspheretypes.Name:
 	default:
 		return fmt.Errorf("invalid Platform")

@@ -8,6 +8,7 @@ import (
 	"github.com/openshift-metalkube/kni-installer/pkg/asset"
 	"github.com/openshift-metalkube/kni-installer/pkg/asset/cluster/aws"
 	"github.com/openshift-metalkube/kni-installer/pkg/asset/cluster/azure"
+	"github.com/openshift-metalkube/kni-installer/pkg/asset/cluster/baremetal"
 	"github.com/openshift-metalkube/kni-installer/pkg/asset/cluster/gcp"
 	"github.com/openshift-metalkube/kni-installer/pkg/asset/cluster/libvirt"
 	"github.com/openshift-metalkube/kni-installer/pkg/asset/cluster/openstack"
@@ -15,6 +16,7 @@ import (
 	"github.com/openshift-metalkube/kni-installer/pkg/types"
 	awstypes "github.com/openshift-metalkube/kni-installer/pkg/types/aws"
 	azuretypes "github.com/openshift-metalkube/kni-installer/pkg/types/azure"
+	baremetaltypes "github.com/openshift-metalkube/kni-installer/pkg/types/baremetal"
 	gcptypes "github.com/openshift-metalkube/kni-installer/pkg/types/gcp"
 	libvirttypes "github.com/openshift-metalkube/kni-installer/pkg/types/libvirt"
 	nonetypes "github.com/openshift-metalkube/kni-installer/pkg/types/none"
@@ -71,6 +73,8 @@ func (m *Metadata) Generate(parents asset.Parents) (err error) {
 		metadata.ClusterPlatformMetadata.Azure = azure.Metadata(installConfig.Config)
 	case gcptypes.Name:
 		metadata.ClusterPlatformMetadata.GCP = gcp.Metadata(installConfig.Config)
+	case baremetaltypes.Name:
+		metadata.ClusterPlatformMetadata.BareMetal = baremetal.Metadata(clusterID.InfraID, installConfig.Config)
 	case nonetypes.Name, vspheretypes.Name:
 	default:
 		return errors.Errorf("no known platform")
