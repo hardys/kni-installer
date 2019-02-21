@@ -28,4 +28,3 @@ module "masters" {
   root_devices   = var.root_devices
   driver_infos   = var.driver_infos
   instance_infos = var.instance_infos
-}

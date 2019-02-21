@@ -28,6 +28,7 @@ import (
 	"github.com/openshift-metalkube/kni-installer/pkg/tfvars"
 	awstfvars "github.com/openshift-metalkube/kni-installer/pkg/tfvars/aws"
 	azuretfvars "github.com/openshift-metalkube/kni-installer/pkg/tfvars/azure"
+	baremetaltfvars "github.com/openshift-metalkube/kni-installer/pkg/tfvars/baremetal"
 	gcptfvars "github.com/openshift-metalkube/kni-installer/pkg/tfvars/gcp"
 	libvirttfvars "github.com/openshift-metalkube/kni-installer/pkg/tfvars/libvirt"
 	openstacktfvars "github.com/openshift-metalkube/kni-installer/pkg/tfvars/openstack"
@@ -252,7 +253,14 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 			Data:     data,
 		})
 	case baremetal.Name:
-		// FIXME: baremetal
+		data, err = baremetaltfvars.TFVars()
+		if err != nil {
+			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)
+		}
+		t.FileList = append(t.FileList, &asset.File{
+			Filename: fmt.Sprintf(TfPlatformVarsFileName, platform),
+			Data:     data,
+		})
 	default:
 		logrus.Warnf("unrecognized platform %s", platform)
 	}
