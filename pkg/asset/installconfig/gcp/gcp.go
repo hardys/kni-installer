@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/openshift/installer/pkg/types/gcp"
-	"github.com/openshift/installer/pkg/types/gcp/validation"
+	"github.com/openshift-metalkube/kni-installer/pkg/types/gcp"
+	"github.com/openshift-metalkube/kni-installer/pkg/types/gcp/validation"
 	"github.com/pkg/errors"
 	"gopkg.in/AlecAivazis/survey.v1"
 )

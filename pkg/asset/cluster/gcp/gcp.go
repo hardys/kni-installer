@@ -2,8 +2,8 @@
 package gcp
 
 import (
-	"github.com/openshift/installer/pkg/types"
-	"github.com/openshift/installer/pkg/types/gcp"
+	"github.com/openshift-metalkube/kni-installer/pkg/types"
+	"github.com/openshift-metalkube/kni-installer/pkg/types/gcp"
 )
 
 // Metadata converts an install configuration to GCP metadata.

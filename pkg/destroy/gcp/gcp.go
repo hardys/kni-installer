@@ -18,10 +18,10 @@ import (
 	"google.golang.org/api/option"
 	storage "google.golang.org/api/storage/v1"
 
-	gcpconfig "github.com/openshift/installer/pkg/asset/installconfig/gcp"
-	"github.com/openshift/installer/pkg/destroy/providers"
-	"github.com/openshift/installer/pkg/types"
-	"github.com/openshift/installer/pkg/version"
+	gcpconfig "github.com/openshift-metalkube/kni-installer/pkg/asset/installconfig/gcp"
+	"github.com/openshift-metalkube/kni-installer/pkg/destroy/providers"
+	"github.com/openshift-metalkube/kni-installer/pkg/types"
+	"github.com/openshift-metalkube/kni-installer/pkg/version"
 )
 
 var (
