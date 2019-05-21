@@ -21,6 +21,8 @@ import (
 	azureprovider "sigs.k8s.io/cluster-api-provider-azure/pkg/apis/azureprovider/v1alpha1"
 	openstackapi "sigs.k8s.io/cluster-api-provider-openstack/pkg/apis"
 	openstackprovider "sigs.k8s.io/cluster-api-provider-openstack/pkg/apis/openstackproviderconfig/v1alpha1"
+        baremetalapi "github.com/metal3-io/cluster-api-provider-baremetal/pkg/apis"
+        baremetalprovider "github.com/metal3-io/cluster-api-provider-baremetal/pkg/apis/baremetal/v1alpha1"
 
 	"github.com/openshift-metalkube/kni-installer/pkg/asset"
 	"github.com/openshift-metalkube/kni-installer/pkg/asset/ignition/machine"
@@ -276,12 +278,14 @@ func (m *Master) Machines() ([]machineapi.Machine, error) {
 	gcpapi.AddToScheme(scheme)
 	libvirtapi.AddToScheme(scheme)
 	openstackapi.AddToScheme(scheme)
+	baremetalapi.AddToScheme(scheme)
 	decoder := serializer.NewCodecFactory(scheme).UniversalDecoder(
 		awsprovider.SchemeGroupVersion,
 		azureprovider.SchemeGroupVersion,
 		gcpprovider.SchemeGroupVersion,
 		libvirtprovider.SchemeGroupVersion,
 		openstackprovider.SchemeGroupVersion,
+		baremetalprovider.SchemeGroupVersion,
 	)
 
 	machines := []machineapi.Machine{}
