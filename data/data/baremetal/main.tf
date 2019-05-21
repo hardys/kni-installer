@@ -9,7 +9,7 @@ provider "ironic" {
 
 provider "ironic" {
   url          = "${var.ironic_uri}"
-  microversion = "1.50"
+  microversion = "1.52"
 }
 
 module "bootstrap" {
