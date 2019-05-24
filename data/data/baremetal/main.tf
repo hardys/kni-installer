@@ -34,4 +34,3 @@ module "masters" {
   driver_infos   = var.driver_infos
   instance_infos = var.instance_infos
 }
-
