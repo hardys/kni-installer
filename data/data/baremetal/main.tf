@@ -8,7 +8,7 @@ provider "ironic" {
 }
 
 provider "ironic" {
-  url          = "${var.ironic_uri}"
+  url          = var.ironic_uri
   microversion = "1.52"
 }
 
@@ -34,3 +34,4 @@ module "masters" {
   driver_infos   = var.driver_infos
   instance_infos = var.instance_infos
 }
+
