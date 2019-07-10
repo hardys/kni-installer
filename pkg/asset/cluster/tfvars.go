@@ -261,7 +261,7 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 			"provisioning",
 			installConfig.Config.Platform.BareMetal.Hosts,
 			installConfig.Config.Platform.BareMetal.Image,
-			)
+		)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)
 		}
