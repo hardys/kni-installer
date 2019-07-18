@@ -12,5 +12,6 @@ func Metadata(config *types.InstallConfig) *baremetal.Metadata {
 	return &baremetal.Metadata{
 		LibvirtURI:              config.Platform.BareMetal.LibvirtURI,
 		BootstrapProvisioningIP: config.Platform.BareMetal.BootstrapProvisioningIP,
+		ProvisioningHostIP:      config.Platform.BareMetal.ProvisioningHostIP,
 	}
 }

@@ -13,6 +13,10 @@ func ValidatePlatform(p *baremetal.Platform, fldPath *field.Path) field.ErrorLis
 		allErrs = append(allErrs, field.Invalid(fldPath.Child("libvirtURI"), p.LibvirtURI, err.Error()))
 	}
 
+	if err := validate.IP(p.ProvisioningHostIP); err != nil {
+		allErrs = append(allErrs, field.Invalid(fldPath.Child("provisioningHostIP"), p.ProvisioningHostIP, err.Error()))
+	}
+
 	if err := validate.IP(p.BootstrapProvisioningIP); err != nil {
 		allErrs = append(allErrs, field.Invalid(fldPath.Child("bootstrapProvisioningIP"), p.BootstrapProvisioningIP, err.Error()))
 	}
